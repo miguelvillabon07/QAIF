@@ -1,5 +1,14 @@
 # QAIF – Quality Assurance with Artificial Intelligence for Fintech
 
+## Autores
+
+- Miguel Ángel Villabón Romero
+- Diana Carolina Herrera Ayala
+
+Proyecto de grado – Ingeniería de Sistemas
+
+Universidad Nacional Abierta y a Distancia – UNAD
+
 ## Descripción
 
 QAIF es un framework orientado a la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
@@ -85,3 +94,5 @@ QAIF/
 ├── docker-compose.yml      # Servicios del entorno
 ├── pyproject.toml          # Dependencias y configuración
 └── README.md               # Documentación principal
+
+
