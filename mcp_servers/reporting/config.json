@@ -1,0 +1,7 @@
+{
+  "name": "reporting-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para generación de reportes QA en Markdown y PDF",
+  "transport": "stdio",
+  "tools": ["reporting_generate_md", "reporting_generate_pdf", "reporting_get_log"]
+}

@@ -1,0 +1,74 @@
+# Reporte de Pruebas — {{ suite.suite_name }}
+
+**Fecha:** {{ now }}
+**Repositorio:** {{ suite.repo_name }}
+**Empresa:** {{ company_name }}
+
+---
+
+## Resumen Ejecutivo
+
+| Métrica | Valor |
+|---------|-------|
+| Total de pruebas | {{ suite.total }} |
+| Pasaron | {{ suite.passed }} ✅ |
+| Fallaron | {{ suite.failed }} ❌ |
+| Tasa de éxito | {{ "%.1f"|format(suite.pass_rate * 100) }}% |
+| Duración total | {{ "%.1f"|format(suite.duration_seconds) }}s |
+{% if avg_response_time %}| Tiempo promedio de respuesta | {{ "%.1f"|format(avg_response_time) }}ms |{% endif %}
+
+{% if suite.pass_rate >= 0.9 %}
+> ✅ **Estado: APTO PARA PRODUCCIÓN** — El sistema supera el umbral de calidad del 90%.
+{% elif suite.pass_rate >= 0.7 %}
+> ⚠️ **Estado: REQUIERE ATENCIÓN** — Hay fallos que deben revisarse antes de release.
+{% else %}
+> ❌ **Estado: NO APTO** — Demasiados fallos críticos. Bloquear deployment.
+{% endif %}
+
+---
+
+## Resultados por Endpoint
+
+{% for result in suite.results %}
+### {{ loop.index }}. {{ result.test_case_name }} — {{ "✅ PASS" if result.passed else "❌ FAIL" }}
+
+| Campo | Valor |
+|-------|-------|
+| Endpoint ID | `{{ result.test_case_id }}` |
+| Status HTTP | {{ result.actual_status_code if result.actual_status_code else "N/A" }} |
+| Tiempo de respuesta | {{ result.response_time_ms if result.response_time_ms else "N/A" }}ms |
+{% if result.user_story_ref %}| User Story | {{ result.user_story_ref }} |{% endif %}
+{% if result.error_message %}| Error | `{{ result.error_message }}` |{% endif %}
+
+{% if result.assertion_results %}
+**Assertions:**
+
+{% for ar in result.assertion_results %}
+- {{ "✅" if ar.passed else "❌" }} **{{ ar.description }}**{% if not ar.passed %} — esperado: `{{ ar.expected }}`, actual: `{{ ar.actual }}`{% if ar.error_message %} ({{ ar.error_message }}){% endif %}{% endif %}
+
+{% endfor %}
+{% endif %}
+---
+{% endfor %}
+
+## Sugerencias de Automatización Adicional
+
+{% if suite.automation_suggestions %}
+{% for suggestion in suite.automation_suggestions %}
+{{ loop.index }}. {{ suggestion }}
+{% endfor %}
+{% else %}
+_No hay sugerencias disponibles._
+{% endif %}
+
+---
+
+## Información de Ejecución
+
+| Campo | Valor |
+|-------|-------|
+| Inicio | {{ suite.started_at }} |
+| Fin | {{ suite.finished_at }} |
+| Pipeline | Automatizado por MCP QA Automation |
+
+_Reporte generado automáticamente · No modificar manualmente_

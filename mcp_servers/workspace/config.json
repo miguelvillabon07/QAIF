@@ -1,0 +1,10 @@
+{
+  "name": "workspace-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server de Workspace — audit trail, gestión de repos y reportes",
+  "transport": "stdio",
+  "tools": [
+    "workspace_list_repos", "workspace_get_summary", "workspace_list_reports",
+    "workspace_read_report", "workspace_cleanup", "workspace_get_status", "workspace_log_event"
+  ]
+}

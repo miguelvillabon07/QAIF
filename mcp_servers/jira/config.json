@@ -1,0 +1,10 @@
+{
+  "name": "jira-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para Jira — CRUD de issues, attachments y reportes",
+  "transport": "stdio",
+  "tools": [
+    "jira_create_issue", "jira_get_issue", "jira_update_issue", "jira_add_comment",
+    "jira_upload_attachment", "jira_transition_issue", "jira_link_issues", "jira_search_issues"
+  ]
+}

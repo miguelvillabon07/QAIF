@@ -1,0 +1,93 @@
+services:
+
+  # ── Ollama: IA local con aceleración GPU (RTX 3050 6GB) ───────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: mcp-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=5m
+      - OLLAMA_NUM_PARALLEL=1 # 1 request a la vez con 6GB VRAM
+      - OLLAMA_MAX_LOADED_MODELS=1 # Solo 1 modelo en VRAM
+      - OLLAMA_FLASH_ATTENTION=1 # Flash Attention 2: ahorra ~20% VRAM
+      - CUDA_VISIBLE_DEVICES=0
+    healthcheck:
+      # test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      test: [ "CMD", "ollama", "list" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # ── Redis: CAG Cache ───────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: mcp-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Agente Principal: Orquestador + Consola Interactiva ────────
+  agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcp-agent
+    restart: "no"
+    depends_on:
+      ollama:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file: .env
+    volumes:
+      - ./workspace:/app/workspace
+      - ./secrets:/app/secrets:ro
+      - ./mcp_servers:/app/mcp_servers
+      - ./src:/app/src
+      - ./config:/app/config
+    stdin_open: true
+    tty: true
+    command: python -m src.console
+    working_dir: /app
+
+  # ── Model Puller: descarga Qwen3:8b al iniciar (una sola vez) ───
+  model-puller:
+    image: curlimages/curl:latest
+    container_name: mcp-model-puller
+    depends_on:
+      ollama:
+        condition: service_healthy
+    env_file: .env
+    entrypoint: [ "/bin/sh", "-c" ]
+    command:
+      - |
+        MODEL=$${LOCAL_MODEL_NAME:-qwen3:8b}
+        echo "Verificando modelo: $$MODEL"
+        if curl -sf http://ollama:11434/api/tags | grep -q "\"$$MODEL\""; then
+          echo "Modelo $$MODEL ya disponible — omitiendo descarga"
+        else
+          echo "Descargando $$MODEL (esto puede tardar varios minutos)..."
+          curl -X POST http://ollama:11434/api/pull \
+               -H "Content-Type: application/json" \
+               -d "{\"name\": \"$$MODEL\"}" \
+               --no-buffer
+          echo "Modelo $$MODEL descargado exitosamente"
+        fi
+    restart: "no"
+
+volumes:
+  ollama_models:
+  redis_data:

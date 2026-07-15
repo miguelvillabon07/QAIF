@@ -1,0 +1,11 @@
+{
+  "name": "pos-api-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para POS API — setup, ejecución de tests y análisis de resultados",
+  "transport": "stdio",
+  "tools": [
+    "pos_api_setup", "pos_api_run_happy_path", "pos_api_run_test_case",
+    "pos_api_shutdown", "pos_api_list_endpoints", "pos_api_run_custom_test",
+    "pos_api_get_base_url", "pos_api_health_check"
+  ]
+}

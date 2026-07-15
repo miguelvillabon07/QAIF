@@ -1,0 +1,7 @@
+{
+  "name": "google-drive-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para Google Drive — lee transcripciones de reuniones",
+  "transport": "stdio",
+  "tools": ["drive_list_files", "drive_read_file", "drive_get_metadata", "drive_search_files"]
+}

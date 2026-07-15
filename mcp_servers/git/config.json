@@ -1,0 +1,10 @@
+{
+  "name": "git-mcp",
+  "version": "1.0.0",
+  "description": "MCP Server para Git — clona repos, lee archivos y analiza README con LLM",
+  "transport": "stdio",
+  "tools": [
+    "git_clone", "git_pull", "git_read_file", "git_list_files",
+    "git_analyze_readme", "git_get_info", "git_detect_api_spec"
+  ]
+}

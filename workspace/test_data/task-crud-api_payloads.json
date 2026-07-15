@@ -1,0 +1,26 @@
+{
+  "/api/health": {
+    "path": "/api/health",
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "payload": {}
+  },
+  "/api/tasks": {
+    "path": "/api/tasks",
+    "method": "GET",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "payload": {}
+  },
+  "/api/tasks/<id>": {
+    "path": "/api/tasks/{{id}}",
+    "method": "DELETE",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "payload": {}
+  }
+}

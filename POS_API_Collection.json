@@ -1,0 +1,176 @@
+{
+  "info": {
+    "name": "POS API Validation Suite",
+    "description": "Pruebas de servicios para POS API (puerto 7171).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Facturas - Cálculo Avanzado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"saldo\": 100000.0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7171/api/v1/pos/facturas/calculo-avanzado",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7171",
+          "path": [
+            "api",
+            "v1",
+            "pos",
+            "facturas",
+            "calculo-avanzado"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Facturas - Crear",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"traceId\": \"REQ-123\",\n  \"documentTypeCode\": \"01\",\n  \"lineas\": [\n    {\n      \"id\": \"1\",\n      \"plu\": \"2223\",\n      \"description\": \"Juguito Mora 1.000 ml\",\n      \"quantity\": 2,\n      \"priceAmount\": 10000.00,\n      \"lineExtensionAmount\": 20000.00\n    }\n  ],\n  \"impuestos\": [\n    {\n      \"id\": \"01\",\n      \"percent\": 19.00,\n      \"taxAmount\": 3800.00,\n      \"taxableAmount\": 20000.00\n    }\n  ],\n  \"totales\": {\n    \"taxExclusiveAmount\": 20000.00,\n    \"taxInclusiveAmount\": 23800.00,\n    \"payableAmount\": 23800.00\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7171/api/v1/pos/facturas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7171",
+          "path": [
+            "api",
+            "v1",
+            "pos",
+            "facturas"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Notas Crédito - Crear",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"referenceId\": \"REF-456\",\n  \"responseCode\": \"200\",\n  \"invoiceId\": \"INV-1000\",\n  \"lineas\": [\n    {\n      \"id\": \"1\",\n      \"plu\": \"2223\",\n      \"description\": \"Juguito Mora 1.000 ml\",\n      \"quantity\": 1,\n      \"priceAmount\": 10000.00,\n      \"lineExtensionAmount\": 10000.00\n    }\n  ],\n  \"totales\": {\n    \"taxExclusiveAmount\": 10000.00,\n    \"taxInclusiveAmount\": 11900.00,\n    \"payableAmount\": 11900.00\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7171/api/v1/pos/notas-credito",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7171",
+          "path": [
+            "api",
+            "v1",
+            "pos",
+            "notas-credito"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Notas Débito - Crear",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"referenceId\": \"REF-789\",\n  \"invoiceId\": \"INV-1000\",\n  \"reason\": \"Cargo adicional\",\n  \"cargoAdicional\": 1500.00,\n  \"totales\": {\n    \"taxExclusiveAmount\": 11500.00,\n    \"taxInclusiveAmount\": 13685.00,\n    \"payableAmount\": 13685.00\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:7171/api/v1/pos/notas-debito",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7171",
+          "path": [
+            "api",
+            "v1",
+            "pos",
+            "notas-debito"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Productos - Consultar",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:7171/api/v1/pos/productos/2223",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "7171",
+          "path": [
+            "api",
+            "v1",
+            "pos",
+            "productos",
+            "2223"
+          ]
+        }
+      }
+    }
+  ]
+}
