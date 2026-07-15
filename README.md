@@ -1,20 +1,37 @@
-          [ LOGO QAIF ]
+<div align="center">
 
-🤖 QAIF – Quality Assurance with Artificial Intelligence for Fintech
+# QAIF
 
-🟦 Python   🟩 Pytest   🟢 Playwright   🟦 Docker
-🟧 LangGraph   🔴 MCP   ⚫ GitHub Actions
+### Quality Assurance with Artificial Intelligence for Fintech
 
-Autores
+Framework para la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
 
-Descripción
+<br>
+
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-Testing-0A9EDC?logo=pytest&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-Automation-2EAD33?logo=playwright&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Containers-2496ED?logo=docker&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-Orchestration-7C3AED)
+![MCP](https://img.shields.io/badge/MCP-Protocol-E11D48)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)
+
+<br>
+
+**Proyecto de grado — Ingeniería de Sistemas**  
+**Universidad Nacional Abierta y a Distancia — UNAD**
+
+</div>
+
+---
+
+## Descripción
+
+QAIF es un framework orientado a la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
+
+El proyecto integra inteligencia artificial, automatización de pruebas y buenas prácticas de aseguramiento de la calidad del software para apoyar la generación de casos de prueba, la ejecución automatizada, el análisis de resultados y la elaboración de informes.
 
 # QAIF – Quality Assurance with Artificial Intelligence for Fintech
-
-## Autores
-
-- Miguel Ángel Villabón Romero
-- Diana Carolina Herrera Ayala
 
 Proyecto de grado – Ingeniería de Sistemas
 
@@ -28,111 +45,35 @@ El proyecto integra inteligencia artificial, automatización de pruebas y buenas
 
 El framework se desarrolla como parte de un proyecto de grado del programa de Ingeniería de Sistemas de la Universidad Nacional Abierta y a Distancia – UNAD.
 
-## 🏛️ Arquitectura General de QAIF
+## Arquitectura general
 
 ```mermaid
 flowchart TD
+    A["Usuario / Ingeniero QA"] --> B["Consola QAIF"]
+    B --> C["Orquestador LangGraph"]
 
-%% ======== USUARIO ========
+    D["Historias de usuario<br/>OpenAPI / Swagger"] --> C
 
-U["👨‍💻 Usuario / Ingeniero QA"]
+    C --> E["Modelo de lenguaje"]
+    C --> F["Servidores MCP"]
+    C --> G["Caché semántica"]
 
-%% ======== INTERFAZ ========
+    E --> H["Generación de casos de prueba"]
+    F --> H
+    G --> H
 
-CLI["💻 Consola QAIF"]
+    H --> I["Motor de automatización"]
+    I --> J["Pytest"]
+    I --> K["Playwright"]
 
-%% ======== ORQUESTADOR ========
+    J --> L["APIs REST"]
+    K --> L
 
-ORCH["🧠 Orquestador
-LangGraph"]
+    L --> M["Análisis de resultados"]
+    M --> N["Reportes y métricas"]
 
-%% ======== ENTRADAS ========
-
-REQ["📑 Historias de Usuario
-Documentación API
-OpenAPI / Swagger"]
-
-%% ======== IA ========
-
-LLM["🤖 Modelo de Lenguaje
-(OpenAI · Ollama · Claude · Gemini)"]
-
-%% ======== MCP ========
-
-MCP["🔌 Servidores MCP"]
-
-CACHE["⚡ Caché"]
-
-%% ======== GENERACIÓN ========
-
-GEN["📝 Generación Inteligente
-de Casos de Prueba"]
-
-%% ======== QA ========
-
-ENGINE["⚙️ Motor QA"]
-
-PLAY["🎭 Playwright"]
-
-PYTEST["🧪 Pytest"]
-
-%% ======== API ========
-
-API["🌐 APIs REST"]
-
-%% ======== RESULTADOS ========
-
-REPORT["📊 Reportes"]
-
-METRICS["📈 Métricas"]
-
-JIRA["📋 Jira"]
-
-%% ======== CONTENEDORES ========
-
-DOCKER["🐳 Docker"]
-
-GITHUB["☁️ GitHub Actions"]
-
-%% ======== CONEXIONES ========
-
-U --> CLI
-
-CLI --> ORCH
-
-REQ --> ORCH
-
-ORCH --> LLM
-
-ORCH --> MCP
-
-ORCH --> CACHE
-
-LLM --> GEN
-
-MCP --> GEN
-
-CACHE --> GEN
-
-GEN --> ENGINE
-
-ENGINE --> PLAY
-
-ENGINE --> PYTEST
-
-PLAY --> API
-
-PYTEST --> API
-
-API --> REPORT
-
-REPORT --> METRICS
-
-REPORT --> JIRA
-
-ENGINE --> DOCKER
-
-DOCKER --> GITHUB
+    O["Docker y Docker Compose"] --> I
+    P["GitHub Actions"] --> I
 ```
 
 ## Objetivo general
@@ -212,5 +153,11 @@ QAIF/
 ├── docker-compose.yml      # Servicios del entorno
 ├── pyproject.toml          # Dependencias y configuración
 └── README.md               # Documentación principal
+
+```
+## Autores
+
+- Miguel Ángel Villabón Romero
+- Diana Carolina Herrera Ayala
 
 
