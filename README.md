@@ -17,6 +17,113 @@ El proyecto integra inteligencia artificial, automatización de pruebas y buenas
 
 El framework se desarrolla como parte de un proyecto de grado del programa de Ingeniería de Sistemas de la Universidad Nacional Abierta y a Distancia – UNAD.
 
+## 🏛️ Arquitectura General de QAIF
+
+```mermaid
+flowchart TD
+
+%% ======== USUARIO ========
+
+U["👨‍💻 Usuario / Ingeniero QA"]
+
+%% ======== INTERFAZ ========
+
+CLI["💻 Consola QAIF"]
+
+%% ======== ORQUESTADOR ========
+
+ORCH["🧠 Orquestador
+LangGraph"]
+
+%% ======== ENTRADAS ========
+
+REQ["📑 Historias de Usuario
+Documentación API
+OpenAPI / Swagger"]
+
+%% ======== IA ========
+
+LLM["🤖 Modelo de Lenguaje
+(OpenAI · Ollama · Claude · Gemini)"]
+
+%% ======== MCP ========
+
+MCP["🔌 Servidores MCP"]
+
+CACHE["⚡ Caché"]
+
+%% ======== GENERACIÓN ========
+
+GEN["📝 Generación Inteligente
+de Casos de Prueba"]
+
+%% ======== QA ========
+
+ENGINE["⚙️ Motor QA"]
+
+PLAY["🎭 Playwright"]
+
+PYTEST["🧪 Pytest"]
+
+%% ======== API ========
+
+API["🌐 APIs REST"]
+
+%% ======== RESULTADOS ========
+
+REPORT["📊 Reportes"]
+
+METRICS["📈 Métricas"]
+
+JIRA["📋 Jira"]
+
+%% ======== CONTENEDORES ========
+
+DOCKER["🐳 Docker"]
+
+GITHUB["☁️ GitHub Actions"]
+
+%% ======== CONEXIONES ========
+
+U --> CLI
+
+CLI --> ORCH
+
+REQ --> ORCH
+
+ORCH --> LLM
+
+ORCH --> MCP
+
+ORCH --> CACHE
+
+LLM --> GEN
+
+MCP --> GEN
+
+CACHE --> GEN
+
+GEN --> ENGINE
+
+ENGINE --> PLAY
+
+ENGINE --> PYTEST
+
+PLAY --> API
+
+PYTEST --> API
+
+API --> REPORT
+
+REPORT --> METRICS
+
+REPORT --> JIRA
+
+ENGINE --> DOCKER
+
+DOCKER --> GITHUB
+```
+
 ## Objetivo general
 
 Diseñar e implementar un framework de automatización de pruebas asistido por inteligencia artificial para APIs REST en entornos fintech colombianos, mediante el análisis comparativo de herramientas de inteligencia artificial aplicadas al aseguramiento de la calidad del software.
