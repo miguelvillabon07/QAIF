@@ -1,3 +1,14 @@
+          [ LOGO QAIF ]
+
+🤖 QAIF – Quality Assurance with Artificial Intelligence for Fintech
+
+🟦 Python   🟩 Pytest   🟢 Playwright   🟦 Docker
+🟧 LangGraph   🔴 MCP   ⚫ GitHub Actions
+
+Autores
+
+Descripción
+
 # QAIF – Quality Assurance with Artificial Intelligence for Fintech
 
 ## Autores
