@@ -171,7 +171,8 @@ QAIF/
 
 > **Nota:** Este repositorio corresponde al desarrollo del framework QAIF como parte de un proyecto de grado. Su implementación tiene fines académicos y de investigación, orientados a la automatización inteligente de pruebas sobre APIs REST mediante inteligencia artificial.
 
-> ## Estado del proyecto
+---
+## Estado del proyecto
 
 Este repositorio corresponde al desarrollo del framework QAIF como parte del proyecto de grado del programa de Ingeniería de Sistemas de la Universidad Nacional Abierta y a Distancia (UNAD).
 El prototipo continúa en desarrollo y evolución conforme a las actividades definidas para el proyecto.
