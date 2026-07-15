@@ -16,36 +16,24 @@ Framework para la automatización inteligente de pruebas sobre APIs REST en orga
 ![MCP](https://img.shields.io/badge/MCP-Protocol-E11D48)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)
 
-<br>
-
 **Proyecto de grado — Ingeniería de Sistemas**  
-**Universidad Nacional Abierta y a Distancia — UNAD**
+**Universidad Nacional Abierta y a Distancia (UNAD)**
 
 </div>
 
 ---
 
-## Descripción
+# Descripción
 
-QAIF es un framework orientado a la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
+QAIF (Quality Assurance with Artificial Intelligence for Fintech) es un framework orientado a la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
 
-El proyecto integra inteligencia artificial, automatización de pruebas y buenas prácticas de aseguramiento de la calidad del software para apoyar la generación de casos de prueba, la ejecución automatizada, el análisis de resultados y la elaboración de informes.
+El proyecto integra inteligencia artificial, automatización de pruebas y buenas prácticas de aseguramiento de la calidad del software para apoyar la generación de casos de prueba, la ejecución automatizada, el análisis de resultados y la generación de reportes técnicos.
 
-# QAIF – Quality Assurance with Artificial Intelligence for Fintech
+El framework se desarrolla como parte del proyecto de grado del programa de Ingeniería de Sistemas de la Universidad Nacional Abierta y a Distancia (UNAD).
 
-Proyecto de grado – Ingeniería de Sistemas
+---
 
-Universidad Nacional Abierta y a Distancia – UNAD
-
-## Descripción
-
-QAIF es un framework orientado a la automatización inteligente de pruebas sobre APIs REST en organizaciones fintech colombianas.
-
-El proyecto integra inteligencia artificial, automatización de pruebas y buenas prácticas de aseguramiento de la calidad del software para apoyar la generación de casos de prueba, la ejecución automatizada, el análisis de resultados y la elaboración de reportes.
-
-El framework se desarrolla como parte de un proyecto de grado del programa de Ingeniería de Sistemas de la Universidad Nacional Abierta y a Distancia – UNAD.
-
-## Arquitectura general
+# Arquitectura general
 
 ```mermaid
 flowchart TD
@@ -54,7 +42,7 @@ flowchart TD
 
     D["Historias de usuario<br/>OpenAPI / Swagger"] --> C
 
-    C --> E["Modelo de lenguaje"]
+    C --> E["Modelo de Lenguaje"]
     C --> F["Servidores MCP"]
     C --> G["Caché semántica"]
 
@@ -63,6 +51,7 @@ flowchart TD
     G --> H
 
     H --> I["Motor de automatización"]
+
     I --> J["Pytest"]
     I --> K["Playwright"]
 
@@ -70,17 +59,22 @@ flowchart TD
     K --> L
 
     L --> M["Análisis de resultados"]
+
     M --> N["Reportes y métricas"]
 
     O["Docker y Docker Compose"] --> I
     P["GitHub Actions"] --> I
 ```
 
-## Objetivo general
+---
+
+# Objetivo general
 
 Diseñar e implementar un framework de automatización de pruebas asistido por inteligencia artificial para APIs REST en entornos fintech colombianos, mediante el análisis comparativo de herramientas de inteligencia artificial aplicadas al aseguramiento de la calidad del software.
 
-## Funcionalidades principales
+---
+
+# Funcionalidades principales
 
 - Generación asistida de casos de prueba.
 - Ejecución automatizada de pruebas funcionales sobre APIs REST.
@@ -91,7 +85,9 @@ Diseñar e implementar un framework de automatización de pruebas asistido por i
 - Gestión de trazabilidad y evidencia de pruebas.
 - Ejecución en entornos controlados mediante datos sintéticos.
 
-## Escenarios de validación
+---
+
+# Escenarios de validación
 
 El prototipo se orienta a escenarios representativos del sector fintech:
 
@@ -99,28 +95,32 @@ El prototipo se orienta a escenarios representativos del sector fintech:
 - Consulta de saldo.
 - Transferencia de fondos.
 
-El framework se valida únicamente en entornos académicos, APIs simuladas, entornos sandbox y datos de prueba. No utiliza información financiera real ni se implementa directamente en entidades financieras.
+La validación del framework se realiza exclusivamente en entornos académicos, APIs simuladas, entornos Sandbox y datos sintéticos, sin utilizar información financiera real ni intervenir sistemas productivos de entidades financieras.
 
-## Arquitectura general
+---
 
-El framework se organiza mediante componentes especializados:
+# Componentes del framework
 
-1. **Entrada de requisitos y documentación:** recibe historias de usuario, especificaciones técnicas o documentación de APIs.
-2. **Procesamiento con inteligencia artificial:** analiza la información y propone escenarios y casos de prueba.
-3. **Gestión de casos de prueba:** estructura los datos de entrada, resultados esperados y criterios de validación.
-4. **Motor de automatización:** ejecuta pruebas funcionales sobre los endpoints definidos.
-5. **Análisis de resultados:** identifica respuestas correctas, errores y posibles defectos.
-6. **Generación de reportes:** produce evidencia y métricas de la ejecución.
-7. **Contenedores e integración continua:** facilita la reproducción del entorno y la ejecución automatizada.
+El framework QAIF está conformado por los siguientes componentes principales:
 
-## Tecnologías utilizadas
+1. **Entrada de requisitos y documentación**, encargada de recibir historias de usuario, especificaciones técnicas y documentación de APIs REST.
+2. **Procesamiento con inteligencia artificial**, responsable del análisis de requisitos y la generación de escenarios de prueba.
+3. **Gestión de casos de prueba**, donde se estructuran entradas, salidas esperadas y criterios de validación.
+4. **Motor de automatización**, encargado de ejecutar las pruebas funcionales sobre los servicios REST.
+5. **Análisis de resultados**, que identifica errores, inconsistencias y resultados obtenidos.
+6. **Generación de reportes**, para documentar la evidencia y las métricas obtenidas durante la ejecución.
+7. **Contenedores e integración continua**, orientados a facilitar la reproducibilidad del entorno y la automatización del proceso de pruebas.
+
+---
+
+# Tecnologías utilizadas
 
 - Python
-- pytest
+- Pytest
 - Playwright
-- Model Context Protocol – MCP
+- Model Context Protocol (MCP)
 - LangGraph
-- Modelos de lenguaje – LLM
+- Modelos de Lenguaje (LLM)
 - Ollama
 - Docker
 - Docker Compose
@@ -131,7 +131,9 @@ El framework se organiza mediante componentes especializados:
 - Pydantic
 - Redis
 
-## Estructura del proyecto
+---
+
+# Estructura del proyecto
 
 ```text
 QAIF/
@@ -139,25 +141,34 @@ QAIF/
 ├── docs/                   # Documentación técnica
 ├── mcp_servers/            # Servidores MCP especializados
 ├── scripts/                # Scripts auxiliares
-├── src/                    # Código fuente del framework
-│   ├── cache/              # Gestión de caché
-│   ├── console/            # Interfaz de consola
-│   ├── llm/                # Integración con modelos de lenguaje
-│   ├── orchestrator/       # Orquestación del flujo
-│   ├── schemas/            # Modelos y esquemas de datos
-│   └── utils/              # Funciones auxiliares
-├── tests/                  # Pruebas unitarias y de integración
+├── src/                    # Código fuente
+│   ├── cache/
+│   ├── console/
+│   ├── llm/
+│   ├── orchestrator/
+│   ├── schemas/
+│   └── utils/
+├── tests/                  # Pruebas unitarias e integración
 ├── workspace/              # Datos de prueba y reportes
-├── .env.example            # Plantilla de variables de entorno
-├── Dockerfile              # Configuración del contenedor
-├── docker-compose.yml      # Servicios del entorno
-├── pyproject.toml          # Dependencias y configuración
-└── README.md               # Documentación principal
-
+├── .env.example
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+└── README.md
 ```
-## Autores
 
-- Miguel Ángel Villabón Romero
-- Diana Carolina Herrera Ayala
+---
+
+# Autores
+
+- **Miguel Ángel Villabón Romero**
+- **Diana Carolina Herrera Ayala**
+
+**Programa de Ingeniería de Sistemas**  
+**Universidad Nacional Abierta y a Distancia (UNAD)**
+
+---
+
+> **Nota:** Este repositorio corresponde al desarrollo del framework QAIF como parte de un proyecto de grado. Su implementación tiene fines académicos y de investigación, orientados a la automatización inteligente de pruebas sobre APIs REST mediante inteligencia artificial.
 
 
