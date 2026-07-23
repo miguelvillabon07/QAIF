@@ -39,6 +39,7 @@ Framework para la automatización inteligente de pruebas sobre APIs REST en orga
 - [Flujo de funcionamiento](#flujo-de-funcionamiento)
 - [Resultados de la demostración](#resultados-de-la-demostración)
 - [Trazabilidad del proyecto](#trazabilidad-del-proyecto)
+- [Documentación técnica](#documentación-técnica)
 - [Estructura del repositorio](#estructura-del-repositorio)
 - [Evidencias](#evidencias)
 - [Alcance académico](#alcance-académico)
@@ -114,6 +115,8 @@ flowchart TD
 
 La arquitectura separa el análisis, la generación de pruebas, la ejecución y la producción de evidencia. Esta organización facilita la trazabilidad del proceso y permite que cada componente sea comprendido y validado de manera independiente.
 
+La descripción técnica detallada se encuentra en [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md).
+
 ---
 
 ## Aporte de la inteligencia artificial
@@ -175,7 +178,7 @@ La validación se realiza exclusivamente mediante APIs simuladas, entornos sandb
 | Git y GitHub | Control de versiones, trazabilidad y publicación del código |
 | Markdown y PDF | Generación de reportes técnicos |
 
-> La documentación maestra también contempla Docker, Docker Compose y GitHub Actions como tecnologías de soporte para reproducibilidad e integración continua. La incorporación definitiva de estos elementos debe mantenerse coherente con los archivos efectivamente disponibles en el repositorio.
+La documentación maestra contempla Docker, Docker Compose y GitHub Actions como tecnologías de soporte para reproducibilidad e integración continua. Estos elementos solo deben documentarse como parte implementada cuando sus archivos y flujos estén disponibles efectivamente en el repositorio.
 
 ---
 
@@ -190,6 +193,8 @@ Antes de ejecutar el prototipo se recomienda contar con:
 - El modelo local `qwen3:8b` disponible en Ollama.
 - Redis disponible cuando el flujo requiera caché o almacenamiento temporal.
 - Una API REST o proyecto de prueba con documentación técnica accesible.
+
+La guía ampliada se encuentra en [`docs/INSTALACION.md`](docs/INSTALACION.md).
 
 ---
 
@@ -235,7 +240,9 @@ El prototipo se ejecuta desde la consola del proyecto utilizando los módulos di
 6. Consolidación de resultados.
 7. Generación de reportes Markdown y PDF.
 
-> Debido a que el comando exacto puede variar según el módulo o script utilizado en la demostración, se recomienda consultar la carpeta `scripts/` y la documentación técnica incluida en `docs/` antes de ejecutar el prototipo.
+Debido a que el comando exacto puede variar según el módulo o script utilizado en la demostración, debe verificarse la carpeta `scripts/` y actualizar esta documentación con el comando definitivo empleado por el equipo.
+
+La guía de operación está disponible en [`docs/USO.md`](docs/USO.md).
 
 ---
 
@@ -273,7 +280,7 @@ Durante la demostración del prototipo se ejecutaron siete pruebas correspondien
 - Pruebas con respuesta HTTP 404: **5**.
 - Reportes generados: **Markdown y PDF**.
 
-Las respuestas 404 no representan un fallo del framework. Corresponden al comportamiento del proyecto evaluado, debido a que algunos endpoints requieren recursos creados previamente o identificadores válidos antes de ejecutar determinadas operaciones.
+Las respuestas 404 no representan por sí solas un fallo del framework. En el proyecto evaluado, algunos endpoints requieren recursos creados previamente o identificadores válidos antes de ejecutar determinadas operaciones.
 
 Para cada solicitud, QAIF registra:
 
@@ -282,6 +289,8 @@ Para cada solicitud, QAIF registra:
 - Código de respuesta.
 - Tiempo de ejecución.
 - Estado PASS o FAIL.
+
+La interpretación ampliada está en [`docs/RESULTADOS.md`](docs/RESULTADOS.md).
 
 ---
 
@@ -297,6 +306,20 @@ Para cada solicitud, QAIF registra:
 
 Esta relación busca mantener coherencia entre los objetivos específicos, las historias de usuario, las funcionalidades implementadas y las evidencias presentadas.
 
+La matriz completa está disponible en [`docs/TRAZABILIDAD.md`](docs/TRAZABILIDAD.md).
+
+---
+
+## Documentación técnica
+
+| Documento | Contenido |
+|---|---|
+| [`ARQUITECTURA.md`](docs/ARQUITECTURA.md) | Componentes, flujo y correspondencia con CDIO |
+| [`INSTALACION.md`](docs/INSTALACION.md) | Requisitos, preparación y validación del entorno |
+| [`USO.md`](docs/USO.md) | Operación funcional del prototipo |
+| [`RESULTADOS.md`](docs/RESULTADOS.md) | Métricas, interpretación y relación con TRL 5 |
+| [`TRAZABILIDAD.md`](docs/TRAZABILIDAD.md) | Relación entre objetivos, Scrum, funcionalidades y evidencias |
+
 ---
 
 ## Estructura del repositorio
@@ -305,6 +328,11 @@ Esta relación busca mantener coherencia entre los objetivos específicos, las h
 QAIF/
 ├── config/                    # Configuración general
 ├── docs/                      # Documentación técnica
+│   ├── ARQUITECTURA.md
+│   ├── INSTALACION.md
+│   ├── RESULTADOS.md
+│   ├── TRAZABILIDAD.md
+│   └── USO.md
 ├── mcp_servers/               # Servidores MCP especializados
 ├── scripts/                   # Scripts auxiliares
 ├── src/                       # Código fuente del framework
